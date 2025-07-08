@@ -20,5 +20,5 @@ jobs:
         git config user.name "github-actions"
         git config user.email "github-actions@github.com"
         git add unzipped_folder
-        git commit -m "Unzipped yourfile.zip"
+        git commit -m "Unzipped frontend.zip"
         git push
