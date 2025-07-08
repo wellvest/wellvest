@@ -2,20 +2,39 @@ name: Unzip and Commit
 
 on:
   workflow_dispatch:
-  push:
 
 jobs:
   unzip:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Unzip the file
+      run: unzip frontend.zip -d unzipped_folder
+
+    - name: Configure Git
+      run: |
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+
     - name: Commit and push changes to feature branch
       env:
         TOKEN: ${{ secrets.GH_PAT }}
       run: |
         git checkout -b feature/unzipped-frontend
         git add unzipped_folder
-        git commit -m "Unzipped frontend.zip" || echo "No changes to commit"
+        git commit -m "Unzipped frontend.zip into feature branch" || echo "No changes to commit"
         git remote set-url origin https://x-access-token:${TOKEN}@github.com/${{ github.repository }}
         git push -u origin feature/unzipped-frontend
 
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v6
+      with:
+        token: ${{ secrets.GH_PAT }}
+        commit-message: "Unzipped frontend.zip into new branch"
+        branch: feature/unzipped-frontend
+        title: "Unzipped frontend.zip"
+        body: "This PR contains the unzipped contents of frontend.zip"
+        base: main
