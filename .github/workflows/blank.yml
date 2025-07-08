@@ -12,7 +12,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Unzip the file
+    - name: Unzip the file 
       run: unzip frontend.zip -d unzipped_folder
 
     - name: Commit unzipped content
