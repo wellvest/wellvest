@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* wellvest Design System - Professional Financial Consulting Website */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 20% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 15%;
+
+    /* wellvest Brand Colors */
+    --primary: 220 70% 20%; /* Dark Navy Blue */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 20% 95%;
+    --secondary-foreground: 220 20% 15%;
+
+    --muted: 210 20% 95%;
+    --muted-foreground: 220 10% 45%;
+
+    --accent: 14 90% 55%; /* wellvest Orange */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 10% 90%;
+    --input: 220 10% 90%;
+    --ring: 14 90% 55%;
+
+    --radius: 0.5rem;
+
+    /* wellvest Specific Colors */
+    --navy-header: 220 80% 15%; /* Very dark navy for header */
+    --orange-brand: 14 90% 55%; /* wellvest orange */
+    --light-bg: 210 20% 98%; /* Light background */
+    --text-dark: 220 20% 15%; /* Dark text */
+    --text-light: 220 10% 45%; /* Light text */
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--navy-header)), hsl(220 70% 25%));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--orange-brand)), hsl(25 90% 60%));
+
+    /* Shadows */
+    --shadow-card: 0 4px 6px -1px hsl(220 20% 15% / 0.1), 0 2px 4px -1px hsl(220 20% 15% / 0.06);
+    --shadow-hero: 0 20px 25px -5px hsl(220 20% 15% / 0.1), 0 10px 10px -5px hsl(220 20% 15% / 0.04);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 14 90% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 14 90% 55%;
+
+    /* Dark mode wellvest colors */
+    --navy-header: 220 80% 12%;
+    --orange-brand: 14 90% 55%;
+    --light-bg: 220 20% 8%;
+    --text-dark: 210 40% 98%;
+    --text-light: 215 20.2% 65.1%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* wellvest Component Styles */
+  .hero-section {
+    @apply relative min-h-screen bg-gradient-hero flex items-center justify-center overflow-hidden;
+  }
+
+  .hero-content {
+    @apply container mx-auto px-4 flex items-center justify-between relative z-10;
+  }
+
+  .hero-text {
+    @apply flex-1 pr-12 animate-fade-in;
+  }
+
+  .hero-image {
+    @apply flex-1 relative;
+  }
+
+  .contact-card {
+    @apply bg-white rounded-xl p-8 shadow-card hover:shadow-hero transition-all duration-300 text-center;
+  }
+
+  .contact-icon {
+    @apply w-16 h-16 mx-auto mb-6 bg-orange-brand rounded-full flex items-center justify-center;
+  }
+
+  .nav-link {
+    @apply text-text-dark hover:text-orange-brand transition-colors duration-200;
+  }
+
+  .nav-link.active {
+    @apply text-orange-brand;
+  }
+
+  .btn-primary {
+    @apply bg-orange-brand hover:bg-orange-brand/90 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:scale-105;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-100 hover:bg-gray-200 text-text-dark px-6 py-3 rounded-lg font-semibold transition-all duration-200;
+  }
+}
