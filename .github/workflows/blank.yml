@@ -13,7 +13,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Unzip the file
-      run: unzip yourfile.zip -d unzipped_folder
+      run: unzip frontend.zip -d unzipped_folder
 
     - name: Commit unzipped content
       run: |
