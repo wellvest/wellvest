@@ -34,7 +34,7 @@ jobs:
       with:
         token: ${{ secrets.GH_PAT }}
         commit-message: "Unzipped frontend.zip into new branch"
-        branch: feature/unzipped-frontend
+        branch: dev
         title: "Unzipped frontend.zip"
         body: "This PR contains the unzipped contents of frontend.zip"
         base: main
