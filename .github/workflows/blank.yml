@@ -23,11 +23,11 @@ jobs:
       env:
         TOKEN: ${{ secrets.GH_PAT }}
       run: |
-        git checkout -b feature/unzipped-frontend
+        git checkout -b dev
         git add unzipped_folder
         git commit -m "Unzipped frontend.zip into feature branch" || echo "No changes to commit"
         git remote set-url origin https://x-access-token:${TOKEN}@github.com/${{ github.repository }}
-        git push -u origin feature/unzipped-frontend
+        git push -u origin dev
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v6
