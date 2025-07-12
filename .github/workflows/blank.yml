@@ -18,6 +18,10 @@ jobs:
     - name: Unzip the file
       run: unzip frontend.zip -d unzipped_folder
 
+    - name: Remove .git metadata from unzipped folder
+      run: |
+        find unzipped_folder -name ".git" -type d -exec rm -rf {} +
+
     - name: Configure Git
       run: |
         git config user.name "github-actions"
@@ -27,7 +31,7 @@ jobs:
       env:
         TOKEN: ${{ secrets.GH_PAT }}
       run: |
-        git checkout -b new
+        git checkout -b new || git checkout new
         git add unzipped_folder
         git commit -m "Unzipped frontend.zip into feature branch" || echo "No changes to commit"
         git remote set-url origin https://x-access-token:${TOKEN}@github.com/${{ github.repository }}
