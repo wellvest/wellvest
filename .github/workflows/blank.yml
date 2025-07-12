@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - main
-      - dev
+      - dev2
 
 jobs:
   unzip:
@@ -27,18 +27,18 @@ jobs:
       env:
         TOKEN: ${{ secrets.GH_PAT }}
       run: |
-        git checkout -b dev
+        git checkout -b dev2
         git add unzipped_folder
         git commit -m "Unzipped frontend.zip into feature branch" || echo "No changes to commit"
         git remote set-url origin https://x-access-token:${TOKEN}@github.com/${{ github.repository }}
-        git push -u origin dev
+        git push -u origin dev2
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v6
       with:
         token: ${{ secrets.GH_PAT }}
         commit-message: "Unzipped frontend.zip into new branch"
-        branch: dev
+        branch: dev2
         title: "Unzipped frontend.zip"
         body: "This PR contains the unzipped contents of frontend.zip"
         base: main
